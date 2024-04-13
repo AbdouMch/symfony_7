@@ -1,0 +1,23 @@
+services:
+  web:
+    build: docker/frankenphp
+    container_name: frankenphp_symfo_7
+    networks:
+      - symfony7
+    ports:
+      - "80:80" # HTTP
+      - "443:443" # HTTPS
+      - "443:443/udp" # HTTP/3
+    volumes:
+      - ./:/app/public
+      - caddy_data:/data
+      - caddy_config:/config
+    # comment the following line in production, it allows to have nice human-readable logs in dev
+    tty: true
+
+networks:
+  symfony7:
+
+volumes:
+  caddy_data:
+  caddy_config:

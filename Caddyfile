@@ -1,0 +1,14 @@
+{
+	# Enable FrankenPHP
+	frankenphp
+	# Configure when the directive must be executed
+	order php_server before file_server
+}
+
+a_solutions.com {
+    root * /app/public/public
+	# Enable compression (optional)
+	encode zstd br gzip
+	# Execute PHP files in the current directory and serve assets
+	php_server
+}
